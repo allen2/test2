@@ -7,7 +7,7 @@
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver">
 		</property>
-		<property name="jdbcUrl"  value="jdbc:mysql://101.200.138.217:3306/idfa?characterEncoding=utf8"/>
+		<property name="jdbcUrl"  value="jdbc:mysql://127.0.0.1:3306/idfa?characterEncoding=utf8"/>
 		<property name="user" value="iddd"/>
 		<property name="password" value="iddd"/>
 		<property name="initialPoolSize"  value="3"/> 
@@ -25,7 +25,7 @@
         <property name="driverClass" value="com.mysql.jdbc.Driver">
         </property>
         <property name="jdbcUrl"
-                  value="jdbc:mysql://10.44.17.235:3306/idfa?characterEncoding=utf8"/>
+                  value="jdbc:mysql://127.0.0.1:3306/idfa?characterEncoding=utf8"/>
         <property name="user" value="idd"/>
         <property name="password" value="idd"/>
         <property name="initialPoolSize"  value="3"/>

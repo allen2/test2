@@ -41,11 +41,19 @@ public class ToolsController {
     @Get("cb")
     @Post("cb")
     public String cb(Invocation inv) {
+        StringBuffer sb  = new StringBuffer ();
 
-        String  ip = inv.getParameter("ip") ;
-        String  ua = inv.getParameter("ua") ;
-        System.out.println( ip + " " +  ua );
-        return "@" + ip + " " +  ua  ;
+        Map ma = inv.getRequest().getParameterMap();
+        Iterator<String> iter = ma.keySet().iterator();
+        while(iter.hasNext()){
+            String a = iter.next();
+            sb.append(a);
+            sb.append("=");
+            sb.append(inv.getParameter(a));
+
+        }
+        System.out.println(sb.toString());
+        return "@done"  ;
     }
 
 
