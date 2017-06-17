@@ -1,11 +1,8 @@
 package controllers;
 
-import bean.Idfa;
 import bean.Ip;
-import bean.Ua;
 import dao.IdfaDAO;
 import dao.IpDAO;
-import dao.UaDAO;
 import net.paoding.rose.scanning.context.RoseAppContext;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
@@ -18,8 +15,8 @@ import java.util.List;
 import java.util.Random;
 
 //HttpClient使用get的方式
-public class TestHttpClient {
-    Log log = LogFactory.getLog(TestHttpClient.class);
+public class Test {
+    Log log = LogFactory.getLog(Test.class);
     static String [] user_agent =   {
                      "Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A5313e Safari/7534.48.3", //IE
                      "Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A5313e Safari/7534.48.3",
@@ -44,42 +41,38 @@ public class TestHttpClient {
 
         RoseAppContext rose = new RoseAppContext();
 
-        String url = args[0];
-        String sleep = args[1];
-        int flag = Integer.valueOf(args[2]);
 
-        IpDAO ipDao = rose.getBean(IpDAO.class);
-        UaDAO uaDao = rose.getBean(UaDAO.class);
-        List <Ua> uals = uaDao.getUa();
-        int count = ipDao.getCount();
-        int t = count / flag ;
-        List<Ip> ipls = ipDao.getIp(new Random().nextInt(t)*flag, flag);
+        int flag = 1;
 
-        int s = Integer.parseInt(sleep);
+
+
+        int s = Integer.parseInt("20");
         for (int i = 0; i < flag; i++) {
-            for (int j = 0 ; j <uals.size() ;j ++) {
+            try {
+                HttpClient client = new HttpClient();
+                HttpMethod method = new GetMethod("https://lnk0.com/w1g8sg");
 
-                String ua = uals.get(j).getUa();
-                try {
-                    HttpClient client = new HttpClient();
-                    HttpMethod method = new GetMethod(url);
+                // 这里设置字符编码，避免乱码
+                method.setRequestHeader("Content-Type", "text/html;charset=utf-8");
+                String randomAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10B329 Safari/8536.25";
+                method.setRequestHeader("User-Agent", randomAgent);
+                String randomip = "120.12.12.112";
+                method.setRequestHeader("X-Forwarded-For", randomip);
+                client.executeMethod(method);
 
-                    // 这里设置字符编码，避免乱码
-                    method.setRequestHeader("Content-Type", "text/html;charset=utf-8");
-                    String randomAgent = ua;
-                    method.setRequestHeader("User-Agent", randomAgent);
-                    String randomip = ipls.get(i).getIp();
-                    method.setRequestHeader("X-Forwarded-For", randomip);
-                    client.executeMethod(method);
+                // 打印服务器返回的状态
+                System.out.println(method.getStatusLine());
 
-                    // 打印服务器返回的状态
-                    System.out.println(method.getStatusLine());
-                    method.releaseConnection();
-                    Thread.sleep(new Random().nextInt(s));
-                } catch (Exception e) {
-                    e.printStackTrace();
+                // 获取返回的html页面
+                //byte[] body = method.getResponseBody();
+                // 打印返回的信息
+                //System.out.println(new String(body, "utf-8"));
+                // 释放连接
+                method.releaseConnection();
+                Thread.sleep(new Random().nextInt(s));
+            } catch (Exception e) {
+                e.printStackTrace();
 
-                }
             }
         }
     }

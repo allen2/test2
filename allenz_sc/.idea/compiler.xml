@@ -25,6 +25,8 @@
         <module name="allenz_sc" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="allenz_sc" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
-
