@@ -13,8 +13,8 @@ public interface IpDAO {
     static final String FIELDS = "id, idfa,mac,ip,source" ;
     static final String INSERT_FIELDS = " idfa,mac,ip,source" ;
 
-	@SQL("select "+ FIELDS +" from " + TABLE_NAME + "   limit :1,:2")
-	public List<Ip> getIp(int start, int offset);
+	@SQL("select ip from " + TABLE_NAME + "   limit :1,:2")
+	public List<String> getIp(int start, int offset);
 
 
     @SQL("insert into  " + TABLE_NAME + "(" + INSERT_FIELDS + ") values(:1.idfa," +

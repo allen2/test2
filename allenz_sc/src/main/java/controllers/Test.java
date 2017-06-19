@@ -42,14 +42,14 @@ public class Test {
         RoseAppContext rose = new RoseAppContext();
 
 
-        int flag = 1;
+        int flag = 2;
 
 
-
+        HttpClient client = new HttpClient();
         int s = Integer.parseInt("20");
         for (int i = 0; i < flag; i++) {
             try {
-                HttpClient client = new HttpClient();
+
                 HttpMethod method = new GetMethod("https://lnk0.com/w1g8sg");
 
                 // 这里设置字符编码，避免乱码

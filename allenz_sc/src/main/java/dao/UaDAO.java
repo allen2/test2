@@ -9,12 +9,12 @@ import java.util.List;
 
 @DAO(catalog = "ABC")
 public interface UaDAO {
-    static final String TABLE_NAME= "ip";
+    static final String TABLE_NAME= "ua";
     static final String FIELDS = "id, idfa,mac,ua,source" ;
     static final String INSERT_FIELDS = " idfa,mac,ua,source" ;
 
-	@SQL("select "+ FIELDS +" from " + TABLE_NAME )
-	public List<Ua> getUa();
+	@SQL("select ua from " + TABLE_NAME )
+	public List<String> getUa();
 
 
 
