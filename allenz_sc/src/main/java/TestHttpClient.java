@@ -1,9 +1,4 @@
-import java.io.IOException;
-import java.util.List;
-import java.util.Random;
-
 import bean.Idfa;
-import bean.Ip;
 import dao.IdfaDAO;
 import dao.IpDAO;
 import net.paoding.rose.scanning.context.RoseAppContext;
@@ -12,6 +7,10 @@ import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Random;
 
 //HttpClient使用get的方式
 public class TestHttpClient {

@@ -1,9 +1,5 @@
 package controllers;
 
-import bean.Idfa;
-import bean.Ip;
-import bean.Ua;
-import dao.IdfaDAO;
 import dao.IpDAO;
 import dao.UaDAO;
 import net.paoding.rose.scanning.context.RoseAppContext;
@@ -45,9 +41,7 @@ public class TestHttpClient {
                 String ua = uals.get(j);
                 try {
 
-                    HttpMethod method = new GetMethod(
-                            
-                    );
+                    HttpMethod method = new GetMethod(url);
                     // 这里设置字符编码，避免乱码
                     method.setRequestHeader("Content-Type", "text/html;charset=utf-8");
                     String randomAgent = ua;

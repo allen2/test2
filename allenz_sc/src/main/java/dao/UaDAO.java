@@ -1,6 +1,5 @@
 package dao;
 
-import bean.Ua;
 import net.paoding.rose.jade.annotation.DAO;
 import net.paoding.rose.jade.annotation.SQL;
 
