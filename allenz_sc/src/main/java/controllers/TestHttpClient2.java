@@ -37,8 +37,14 @@ public class TestHttpClient2 {
         int count = ipDao.getCount();
         int t = count / flag;
         List<String> ipls = ipDao.getIp(new Random().nextInt(t) * flag, flag);
-        ThreadPoolExecutor tPool = new ThreadPoolExecutor(20, 10, 1000L, TimeUnit.MINUTES,
-                new ArrayBlockingQueue<Runnable>(50));
+        ThreadPoolExecutor tPool = new ThreadPoolExecutor(20, 10, 1000L, TimeUnit.MINUTES, new ArrayBlockingQueue<Runnable>(50),
+                new RejectedExecutionHandler() {
+                    @Override
+                    public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+                        System.out.println("reject....");
+
+                    }
+                });
 
 
 
@@ -54,7 +60,7 @@ public class TestHttpClient2 {
         }
     }
 
-   
+
 
     private static class  Task implements Runnable{
         String url = "";
