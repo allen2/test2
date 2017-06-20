@@ -34,9 +34,9 @@ public class TestHttpClient2 {
         int count = ipDao.getCount();
         int t = count / flag;
         List<String> ipls = ipDao.getIp(new Random().nextInt(t) * flag, flag);
-        ThreadPoolExecutor tPool = new ThreadPoolExecutor(20, 10, 1000, TimeUnit.SECONDS,
+        ThreadPoolExecutor tPool = new ThreadPoolExecutor(20, 10, 1000, TimeUnit.MINUTES,
                 new ArrayBlockingQueue<Runnable>(50), new RejectedExecutionHandler(){
-
+            @Override
             public void rejectedExecution(Runnable r, ThreadPoolExecutor executor){
                    System.out.println("Rejection  tack");
             }
