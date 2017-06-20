@@ -23,25 +23,8 @@ public class T {
 
         RoseAppContext rose = new RoseAppContext();
 
-//        String url = args[0];
-//        String sleep = args[1];
-//        int flag = Integer.valueOf(args[2]);
-//
-//        IpDAO ipDao = rose.getBean(IpDAO.class);
-//        UaDAO uaDao = rose.getBean(UaDAO.class);
-//        List<String> uals = uaDao.getUa();
-//        int count = ipDao.getCount();
-//        int t = count / flag;
-//        List<String> ipls = ipDao.getIp(new Random().nextInt(t) * flag, flag);
         ThreadPoolExecutor tPool = new ThreadPoolExecutor(20, 10, 1000, TimeUnit.MINUTES,
-                new ArrayBlockingQueue<Runnable>(50), new RejectedExecutionHandler(){
-            @Override
-            public void rejectedExecution(Runnable r, ThreadPoolExecutor executor){
-                   System.out.println("Rejection  tack");
-            }
-
-        });
-
+                new ArrayBlockingQueue<Runnable>(50));
 
 
         for (int i = 0; i < 10; i++) {
