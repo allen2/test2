@@ -37,7 +37,7 @@ public class TestHttpClient2 {
         int count = ipDao.getCount();
         int t = count / flag;
         List<String> ipls = ipDao.getIp(new Random().nextInt(t) * flag, flag);
-        ThreadPoolExecutor tPool = new ThreadPoolExecutor(20, 10, 1000, TimeUnit.MINUTES,
+        ThreadPoolExecutor tPool = new ThreadPoolExecutor(20, 10, 1000L, TimeUnit.MINUTES,
                 new ArrayBlockingQueue<Runnable>(50), new RHander());
 
 
@@ -48,8 +48,8 @@ public class TestHttpClient2 {
 
                 String randomip = ipls.get(i);
                 String randomAgent = uals.get(j);
-                //Runnable r = new Task(url, randomAgent ,randomip);
-                //tPool.execute(r);
+                Runnable r = new Task(url, randomAgent ,randomip);
+                tPool.execute(r);
             }
         }
     }
