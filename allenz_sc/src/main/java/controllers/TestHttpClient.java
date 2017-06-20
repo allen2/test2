@@ -45,7 +45,9 @@ public class TestHttpClient {
                 String ua = uals.get(j);
                 try {
 
-                    HttpMethod method = new GetMethod(url);
+                    HttpMethod method = new GetMethod(
+                            
+                    );
                     // 这里设置字符编码，避免乱码
                     method.setRequestHeader("Content-Type", "text/html;charset=utf-8");
                     String randomAgent = ua;

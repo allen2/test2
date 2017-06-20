@@ -1,11 +1,13 @@
 controllers/ExceptionHandler.class
 bean/Idfa.class
+controllers/TestHttpClient2$Task.class
+controllers/TestHttpClient2.class
 TestHttpClient.class
 bean/Ip.class
 dao/UaDAO.class
 controllers/TestHttpClient.class
-controllers/Test.class
 dao/IdfaDAO.class
 controllers/ToolsController.class
 dao/IpDAO.class
+controllers/TestHttpClient2$1.class
 bean/Ua.class
